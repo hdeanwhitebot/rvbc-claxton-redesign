@@ -490,6 +490,115 @@
       color: var(--muted);
     }
 
+    /* ─── WATCH LIVE ─── */
+    .watch-section {
+      background: var(--navy);
+    }
+    .watch-grid {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 48px;
+      align-items: start;
+    }
+    .watch-player {
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      background: #000;
+      position: relative;
+    }
+    .watch-player iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .watch-offline {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #0a1628;
+      color: rgba(255,255,255,.5);
+      font-size: 14px;
+      text-align: center;
+      gap: 12px;
+    }
+    .watch-offline-icon {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+    }
+    .watch-schedule {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .watch-schedule-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 16px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      transition: background .2s;
+    }
+    .watch-schedule-item:hover { background: rgba(255,255,255,.08); }
+    .watch-schedule-icon {
+      width: 40px; height: 40px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .watch-schedule-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 3px;
+    }
+    .watch-schedule-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      color: white;
+      margin-bottom: 2px;
+    }
+    .watch-schedule-detail {
+      font-size: 12px;
+      color: rgba(255,255,255,.45);
+    }
+    .live-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #dc2626;
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    .live-pill .dot {
+      width: 5px; height: 5px;
+      background: white;
+      border-radius: 50%;
+      animation: pulse 1.5s infinite;
+    }
+    @media (max-width: 768px) {
+      .watch-grid { grid-template-columns: 1fr; }
+    }
+
     /* ─── CTA BANNER ─── */
     .cta-banner {
       background: var(--navy);
@@ -686,9 +795,7 @@
         <li><a href="#pastor">Our Pastor</a></li>
         <li><a href="#messages">Messages</a></li>
         <li><a href="#contact">Contact</a></li>
-        <!-- Uncomment when live streaming:
-        <li><a href="#" class="nav-live"><span class="live-dot"></span> Live Now</a></li>
-        -->
+        <li><a href="#watch">Watch Live</a></li>
         <li><a href="#give" class="nav-give">Give</a></li>
       </ul>
     </div>
@@ -915,6 +1022,96 @@
     </div>
     <div style="text-align: center; margin-top: 40px;">
       <a href="/messages" class="btn btn-navy">View All Messages</a>
+    </div>
+  </div>
+</section>
+
+<!-- WATCH LIVE -->
+<section id="watch" class="watch-section section">
+  <div class="container">
+    <div class="tag" style="color: var(--gold-light);">Watch Online</div>
+    <h2 class="section-title" style="color: white; margin-bottom: 8px;">
+      Join Us From Anywhere
+    </h2>
+    <p class="section-sub" style="color: rgba(255,255,255,.55); margin-bottom: 40px;">
+      Can't make it in person? Every Sunday morning service streams live on Facebook.
+      Midweek and Sunday school are also available on Zoom.
+    </p>
+    <div class="watch-grid">
+
+      <!-- Player -->
+      <div class="watch-player">
+        <!-- Facebook Live embed — replace PAGE_ID with RVBC's Facebook Page ID -->
+        <iframe
+          src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Frvbcclaxton%2Flive&width=800&show_text=false&appId"
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+          allowfullscreen
+          title="Riverview Baptist Church Live Stream"
+          style="width:100%; height:100%; border:none;"
+        ></iframe>
+        <!-- Shown when not live — remove this div when stream is active -->
+        <div class="watch-offline">
+          <div class="watch-offline-icon">📺</div>
+          <div>
+            <div style="font-size: 15px; color: white; font-weight: 600; margin-bottom: 4px;">Stream starts Sunday at 10:15 AM</div>
+            <div>Check back Sunday morning or watch previous services below</div>
+          </div>
+          <a href="https://www.facebook.com/rvbcclaxton" target="_blank" rel="noopener"
+             style="margin-top: 8px; display: inline-flex; align-items: center; gap: 8px;
+                    background: #1877f2; color: white; padding: 10px 20px; border-radius: 6px;
+                    text-decoration: none; font-size: 13px; font-weight: 600;">
+            Watch on Facebook
+          </a>
+        </div>
+      </div>
+
+      <!-- Stream Schedule -->
+      <div class="watch-schedule">
+
+        <div style="font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 4px;">Streaming Schedule</div>
+
+        <div class="watch-schedule-item">
+          <div class="watch-schedule-icon" style="background: rgba(24,119,242,.15); border: 1px solid rgba(24,119,242,.25);">📘</div>
+          <div>
+            <div class="watch-schedule-label">Facebook Live</div>
+            <div class="watch-schedule-title">Sunday Worship Service</div>
+            <div class="watch-schedule-detail">Every Sunday · 10:30 AM CT<br/>facebook.com/rvbcclaxton</div>
+          </div>
+        </div>
+
+        <div class="watch-schedule-item">
+          <div class="watch-schedule-icon" style="background: rgba(35,143,213,.15); border: 1px solid rgba(35,143,213,.25);">💻</div>
+          <div>
+            <div class="watch-schedule-label">Zoom</div>
+            <div class="watch-schedule-title">Sunday School</div>
+            <div class="watch-schedule-detail">Every Sunday · 9:15 AM CT<br/>Zoom link sent to members</div>
+          </div>
+        </div>
+
+        <div class="watch-schedule-item">
+          <div class="watch-schedule-icon" style="background: rgba(35,143,213,.15); border: 1px solid rgba(35,143,213,.25);">💻</div>
+          <div>
+            <div class="watch-schedule-label">Zoom</div>
+            <div class="watch-schedule-title">Wednesday Midweek Service</div>
+            <div class="watch-schedule-detail">Every Wednesday · 7:00 PM CT<br/>Zoom link sent to members</div>
+          </div>
+        </div>
+
+        <div class="watch-schedule-item">
+          <div class="watch-schedule-icon" style="background: rgba(201,151,58,.15); border: 1px solid rgba(201,151,58,.25);">📻</div>
+          <div>
+            <div class="watch-schedule-label">Radio — WYSH-AM</div>
+            <div class="watch-schedule-title">Sunday Broadcast</div>
+            <div class="watch-schedule-detail">Every Sunday · 9:00–9:30 AM CT</div>
+          </div>
+        </div>
+
+        <a href="https://www.facebook.com/rvbcclaxton" target="_blank" rel="noopener"
+           class="btn btn-primary" style="text-align: center; justify-content: center; margin-top: 4px;">
+          Follow on Facebook for Alerts
+        </a>
+
+      </div>
     </div>
   </div>
 </section>
