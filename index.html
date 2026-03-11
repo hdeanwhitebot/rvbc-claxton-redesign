@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Riverview Baptist Church — Redesign Mockup</title>
+  <meta name="description" content="A Christ-centered, Bible-preaching church in Clinton, TN. Join us Sundays at 10:15am. New visitors always welcome." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #1B2E52;
+      --navy-dark: #111e38;
+      --gold:   #C9973A;
+      --gold-light: #e0b060;
+      --cream:  #F9F7F4;
+      --white:  #FFFFFF;
+      --charcoal: #2D2D2D;
+      --muted:  #6B7280;
+      --border: #E5E2DC;
+      --surface: #F1EEE9;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--charcoal);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ─── UTILITY ─── */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 80px 0; }
+    .section-sm { padding: 56px 0; }
+    .serif { font-family: 'Playfair Display', serif; }
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    h2.section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 40px);
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all .2s;
+      border: 2px solid transparent;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--white);
+    }
+    .btn-primary:hover { background: var(--gold-light); }
+    .btn-outline {
+      background: transparent;
+      border-color: rgba(255,255,255,.5);
+      color: var(--white);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,.1); border-color: white; }
+    .btn-navy {
+      background: var(--navy);
+      color: white;
+    }
+    .btn-navy:hover { background: var(--navy-dark); }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(27, 46, 82, .97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .nav-logo-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--gold);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+    }
+    .nav-logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .nav-logo-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: white;
+      line-height: 1.1;
+    }
+    .nav-logo-sub {
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.45);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: rgba(255,255,255,.75);
+      font-size: 13.5px;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: all .15s;
+    }
+    .nav-links a:hover { color: white; background: rgba(255,255,255,.08); }
+    .nav-give {
+      background: var(--gold) !important;
+      color: white !important;
+      padding: 8px 18px !important;
+      border-radius: 6px !important;
+    }
+    .nav-give:hover { background: var(--gold-light) !important; }
+    .nav-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #dc2626 !important;
+      color: white !important;
+      padding: 6px 14px !important;
+      border-radius: 20px !important;
+      font-size: 12px !important;
+      font-weight: 700 !important;
+    }
+    .live-dot {
+      width: 6px; height: 6px;
+      background: white;
+      border-radius: 50%;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .4; }
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(to bottom, rgba(17,30,56,.72) 0%, rgba(17,30,56,.55) 60%, rgba(17,30,56,.85) 100%),
+        url('https://images.unsplash.com/photo-1438032005730-c779502df39b?w=1800&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      padding-top: 70px;
+    }
+    .hero-content {
+      max-width: 700px;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201,151,58,.15);
+      border: 1px solid rgba(201,151,58,.3);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(38px, 6vw, 68px);
+      color: white;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+    .hero-sub {
+      font-size: 18px;
+      color: rgba(255,255,255,.75);
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 56px;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+    .hero-stat-label {
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.45);
+      margin-bottom: 4px;
+    }
+    .hero-stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: white;
+      font-weight: 600;
+    }
+
+    /* ─── SERVICE TIMES ─── */
+    .services-bar {
+      background: var(--navy);
+      padding: 0;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0;
+    }
+    .service-item {
+      padding: 32px 28px;
+      border-right: 1px solid rgba(255,255,255,.08);
+      transition: background .2s;
+    }
+    .service-item:last-child { border-right: none; }
+    .service-item:hover { background: rgba(255,255,255,.04); }
+    .service-day {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .service-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: white;
+      margin-bottom: 6px;
+    }
+    .service-time {
+      font-size: 15px;
+      color: rgba(255,255,255,.6);
+      margin-bottom: 4px;
+    }
+    .service-badge {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(201,151,58,.15);
+      color: var(--gold-light);
+      border: 1px solid rgba(201,151,58,.2);
+    }
+
+    /* ─── WELCOME ─── */
+    .welcome-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .welcome-img {
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 4/5;
+    }
+    .welcome-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .welcome-img-badge {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      right: 24px;
+      background: white;
+      border-radius: 10px;
+      padding: 18px 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.12);
+    }
+    .badge-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .badge-sub {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .pillars {
+      margin-top: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .pillar {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .pillar-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: rgba(201,151,58,.1);
+      border: 1px solid rgba(201,151,58,.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 18px;
+    }
+    .pillar-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .pillar-verse {
+      font-size: 12px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ─── PASTOR ─── */
+    .pastor-section {
+      background: var(--cream);
+    }
+    .pastor-grid {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .pastor-photo {
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pastor-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .pastor-photo-placeholder {
+      font-size: 80px;
+      color: var(--border);
+    }
+    blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(20px, 2.5vw, 28px);
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.5;
+      margin: 24px 0;
+      padding-left: 20px;
+      border-left: 3px solid var(--gold);
+    }
+    .pastor-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .pastor-title {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ─── MESSAGES ─── */
+    .messages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .message-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      transition: all .2s;
+      cursor: pointer;
+    }
+    .message-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 4px 24px rgba(201,151,58,.1);
+      transform: translateY(-2px);
+    }
+    .message-meta {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .message-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      color: var(--navy);
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+    .message-verse {
+      font-size: 13px;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+    .message-player {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .play-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .play-btn svg { margin-left: 2px; }
+    .message-duration {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ─── CTA BANNER ─── */
+    .cta-banner {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(201,151,58,.12) 0%, transparent 70%);
+    }
+    .cta-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .cta-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 3vw, 36px);
+      color: white;
+      margin-bottom: 8px;
+    }
+    .cta-text p {
+      color: rgba(255,255,255,.6);
+      font-size: 15px;
+    }
+    .cta-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* ─── CONTACT / MAP ─── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .contact-detail {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(27,46,82,.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .contact-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .contact-value {
+      font-size: 15px;
+      color: var(--charcoal);
+      font-weight: 500;
+    }
+    .map-embed {
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .map-embed iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--navy-dark);
+      color: rgba(255,255,255,.6);
+      padding: 56px 0 32px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: white;
+      margin-bottom: 10px;
+    }
+    .footer-brand-desc {
+      font-size: 13px;
+      line-height: 1.7;
+      max-width: 280px;
+      margin-bottom: 20px;
+    }
+    .footer-social {
+      display: flex;
+      gap: 10px;
+    }
+    .social-link {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: rgba(255,255,255,.6);
+      font-size: 16px;
+      transition: all .2s;
+    }
+    .social-link:hover { background: var(--gold); color: white; }
+    .footer-heading {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.35);
+      margin-bottom: 16px;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-links a {
+      text-decoration: none;
+      color: rgba(255,255,255,.55);
+      font-size: 13px;
+      transition: color .15s;
+    }
+    .footer-links a:hover { color: white; }
+    .footer-bottom {
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: rgba(255,255,255,.3);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero-stats { gap: 24px; flex-wrap: wrap; }
+      .welcome-grid, .pastor-grid, .contact-grid, .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .cta-inner { flex-direction: column; text-align: center; }
+      .cta-actions { justify-content: center; }
+      .section { padding: 56px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <div class="nav-logo-icon">R</div>
+        <div class="nav-logo-text">
+          <span class="nav-logo-name">Riverview Baptist</span>
+          <span class="nav-logo-sub">Clinton, Tennessee</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pastor">Our Pastor</a></li>
+        <li><a href="#messages">Messages</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <!-- Uncomment when live streaming:
+        <li><a href="#" class="nav-live"><span class="live-dot"></span> Live Now</a></li>
+        -->
+        <li><a href="#give" class="nav-give">Give</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span>📍</span>
+        Clinton, Tennessee · Est. 1945
+      </div>
+      <h1>A Church That <em>Cares</em> for You</h1>
+      <p class="hero-sub">
+        Christ-centered. Bible-preaching. Community-rooted. You are welcome here,
+        exactly as you are.
+      </p>
+      <div class="hero-ctas">
+        <a href="#services" class="btn btn-primary">Plan Your Visit</a>
+        <a href="#messages" class="btn btn-outline">Watch a Message</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-label">Founded</div>
+          <div class="hero-stat-value serif">1945</div>
+        </div>
+        <div>
+          <div class="hero-stat-label">Sunday Worship</div>
+          <div class="hero-stat-value serif">10:15am</div>
+        </div>
+        <div>
+          <div class="hero-stat-label">Also on</div>
+          <div class="hero-stat-value serif">Facebook Live</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE TIMES -->
+<section id="services" class="services-bar">
+  <div class="container">
+    <div class="services-grid">
+      <div class="service-item">
+        <div class="service-day">Sunday Morning</div>
+        <div class="service-title">Sunday School</div>
+        <div class="service-time">9:15 AM</div>
+        <span class="service-badge">In-Building &amp; Zoom</span>
+      </div>
+      <div class="service-item">
+        <div class="service-day">Sunday Morning</div>
+        <div class="service-title">Worship Service</div>
+        <div class="service-time">10:15 AM</div>
+        <span class="service-badge">In-Building &amp; Facebook Live</span>
+      </div>
+      <div class="service-item">
+        <div class="service-day">Sunday Evening</div>
+        <div class="service-title">Evening Service</div>
+        <div class="service-time">6:00 PM</div>
+        <span class="service-badge">In-Building</span>
+      </div>
+      <div class="service-item">
+        <div class="service-day">Wednesday</div>
+        <div class="service-title">Midweek Service</div>
+        <div class="service-time">7:00 PM</div>
+        <span class="service-badge">In-Building &amp; Zoom</span>
+      </div>
+      <div class="service-item">
+        <div class="service-day">Sunday Radio</div>
+        <div class="service-title">WYSH-AM Broadcast</div>
+        <div class="service-time">9:00 – 9:30 AM</div>
+        <span class="service-badge">Radio</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WELCOME / ABOUT -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="welcome-grid">
+      <div class="welcome-img">
+        <img src="https://images.unsplash.com/photo-1523803326055-9729b9e02e5a?w=800&q=80" alt="Riverview Baptist Church congregation" />
+        <div class="welcome-img-badge">
+          <div class="badge-title">Welcome to Riverview</div>
+          <div class="badge-sub">410 Old Blacksferry Lane · Clinton, TN</div>
+        </div>
+      </div>
+      <div>
+        <div class="tag">About Us</div>
+        <h2 class="section-title">A Place to Belong Since 1945</h2>
+        <p class="section-sub">
+          Founded on March 4, 1945, Riverview Baptist Church has been a cornerstone of
+          the Clinton community for over 80 years. Whether you are searching for faith,
+          deepening your walk with Christ, or simply looking for a family — you will
+          find your place here.
+        </p>
+        <div class="pillars">
+          <div class="pillar">
+            <div class="pillar-icon">✝️</div>
+            <div>
+              <div class="pillar-title">Sinners are Evangelized</div>
+              <div class="pillar-verse">Matthew 28:19–20</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🕊️</div>
+            <div>
+              <div class="pillar-title">Saints are Encouraged</div>
+              <div class="pillar-verse">2 Corinthians 1:3–4</div>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">👑</div>
+            <div>
+              <div class="pillar-title">The Savior is Exalted</div>
+              <div class="pillar-verse">Psalm 29:1–2</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 36px;">
+          <a href="#contact" class="btn btn-navy">Plan Your First Visit</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PASTOR -->
+<section id="pastor" class="pastor-section section">
+  <div class="container">
+    <div class="pastor-grid">
+      <div class="pastor-photo">
+        <!-- Replace src with actual pastor photo -->
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Pastor Mark Kitts" />
+      </div>
+      <div>
+        <div class="tag">Our Pastor</div>
+        <h2 class="section-title">Pastor Mark Kitts</h2>
+        <p class="section-sub">
+          Filled with the Holy Spirit and devoted to advancing God's Kingdom, Pastor Kitts
+          answered his calling to ministry early in life. His heart beats for the marginalized —
+          those experiencing hopelessness, desperation, and spiritual need.
+        </p>
+        <blockquote>
+          "Your current situation is not your final destination."
+        </blockquote>
+        <p style="font-size: 14px; color: var(--muted); margin-bottom: 24px; line-height: 1.7;">
+          Drawing from the life of Job and the certainty of Christ's redemptive work,
+          Pastor Kitts reminds the congregation that their past is covered and their
+          future is secured in Him.
+        </p>
+        <div class="pastor-name">Pastor Mark Kitts</div>
+        <div class="pastor-title">Senior Pastor, Riverview Baptist Church</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MESSAGES -->
+<section id="messages" class="section">
+  <div class="container">
+    <div class="tag">Sermons</div>
+    <h2 class="section-title">Recent Messages</h2>
+    <p class="section-sub">
+      Missed a service? Catch up on recent sermons from Pastor Mark Kitts.
+      More messages available in our full archive.
+    </p>
+    <div class="messages-grid">
+      <div class="message-card">
+        <div class="message-meta">Pastor Mark Kitts · Mar 2026</div>
+        <div class="message-title">Minds that are Blinded</div>
+        <div class="message-verse">2 Corinthians 4:1–4</div>
+        <div class="message-player">
+          <div class="play-btn">
+            <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
+              <path d="M1 1l10 6-10 6V1z" fill="white"/>
+            </svg>
+          </div>
+          <span class="message-duration">Listen to Sermon</span>
+        </div>
+      </div>
+      <div class="message-card">
+        <div class="message-meta">Pastor Mark Kitts · Feb 2026</div>
+        <div class="message-title">Mother, I Will Not Tell You No</div>
+        <div class="message-verse">1 Kings 2:19–21</div>
+        <div class="message-player">
+          <div class="play-btn">
+            <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
+              <path d="M1 1l10 6-10 6V1z" fill="white"/>
+            </svg>
+          </div>
+          <span class="message-duration">Listen to Sermon</span>
+        </div>
+      </div>
+      <div class="message-card">
+        <div class="message-meta">Pastor Mark Kitts · Feb 2026</div>
+        <div class="message-title">I'd Rather Have Jesus</div>
+        <div class="message-verse">Hebrews 11:25</div>
+        <div class="message-player">
+          <div class="play-btn">
+            <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
+              <path d="M1 1l10 6-10 6V1z" fill="white"/>
+            </svg>
+          </div>
+          <span class="message-duration">Listen to Sermon</span>
+        </div>
+      </div>
+      <div class="message-card">
+        <div class="message-meta">Pastor Mark Kitts · Jan 2026</div>
+        <div class="message-title">Learning to Sing in a Sighing World</div>
+        <div class="message-verse">2 Chronicles 20:20–22</div>
+        <div class="message-player">
+          <div class="play-btn">
+            <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
+              <path d="M1 1l10 6-10 6V1z" fill="white"/>
+            </svg>
+          </div>
+          <span class="message-duration">Listen to Sermon</span>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 40px;">
+      <a href="/messages" class="btn btn-navy">View All Messages</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section id="give" class="cta-banner section-sm">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="cta-text">
+        <h2>Ready to Visit Us?</h2>
+        <p>We would love to meet you. Come as you are — everyone is welcome.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="https://www.givelify.com" class="btn btn-primary" target="_blank" rel="noopener">Give Online</a>
+        <a href="#contact" class="btn btn-outline">Get Directions</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="tag">Find Us</div>
+    <h2 class="section-title">Come Worship With Us</h2>
+    <div class="contact-grid" style="margin-top: 48px;">
+      <div>
+        <div class="contact-detail">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Address</div>
+            <div class="contact-value">410 Old Blacksferry Lane<br/>Clinton, TN 37716</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-label">Phone</div>
+            <div class="contact-value">(865) 945-3195</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">rbc.claxtontn@gmail.com</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">📻</div>
+          <div>
+            <div class="contact-label">Radio Broadcast</div>
+            <div class="contact-value">WYSH-AM · Sundays 9:00–9:30am</div>
+          </div>
+        </div>
+        <div style="margin-top: 8px; display: flex; gap: 10px;">
+          <a href="https://facebook.com" class="btn btn-navy" style="font-size: 13px; padding: 10px 18px;" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://instagram.com" class="btn" style="font-size: 13px; padding: 10px 18px; background: var(--surface); color: var(--charcoal);" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+      <div class="map-embed">
+        <iframe
+          src="https://maps.google.com/maps?q=410+Old+Blacksferry+Lane+Clinton+TN+37716&output=embed"
+          title="Riverview Baptist Church location map"
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Riverview Baptist Church</div>
+        <div class="footer-brand-desc">
+          A Christ-centered, Bible-preaching church in Clinton, Tennessee,
+          serving the community since 1945.
+        </div>
+        <div class="footer-social">
+          <a href="#" class="social-link" title="Facebook">f</a>
+          <a href="#" class="social-link" title="Instagram">ig</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Service Times</a></li>
+          <li><a href="#pastor">Our Pastor</a></li>
+          <li><a href="#messages">Messages</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#give">Give</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Service Times</div>
+        <ul class="footer-links">
+          <li><a href="#">Sun School · 9:15am</a></li>
+          <li><a href="#">Sun Worship · 10:15am</a></li>
+          <li><a href="#">Sun Evening · 6:00pm</a></li>
+          <li><a href="#">Wed · 7:00pm</a></li>
+          <li><a href="#">WYSH-AM · 9:00am</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Riverview Baptist Church · Clinton, TN</span>
+      <span>410 Old Blacksferry Lane · (865) 945-3195</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
